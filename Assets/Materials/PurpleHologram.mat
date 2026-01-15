@@ -89,7 +89,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CenterFalloff: 2.8
+    - _CenterFalloff: 8.6
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -99,6 +99,10 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FlashAmplitude: 0.267
+    - _GlitchFrequency: 10
+    - _GlitchIntensity: 0.2
+    - _GlitchThreshold: 0.1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -113,11 +117,11 @@ Material:
     - _RimIntensity: 6.2
     - _RimPower: 1
     - _RimSharpness: 1.8
-    - _RimThickness: 1.93
+    - _RimThickness: 1.259
     - _Scale: 0.3
-    - _ScanDensity: 376.36
+    - _ScanDensity: 370.03
     - _ScanIntensity: 0.333
-    - _ScanSpeed: 35.25
+    - _ScanSpeed: -40.8
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -131,8 +135,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.68930477, g: 0.020598056, b: 0.9924528, a: 1}
-    - _RimColor: {r: 0.79622644, g: 0.11267344, b: 0.671952, a: 1}
+    - _MainColor: {r: 0.5913954, g: 0.15327159, b: 0.78867924, a: 1}
+    - _RimColor: {r: 0.42757875, g: 0.06461367, b: 0.6226415, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

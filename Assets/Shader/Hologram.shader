@@ -11,7 +11,8 @@ Shader "Custom/Hologram"
         // Couleur du contour
         _RimColor ("Rim Color", Color) = (0, 1, 0, 1)
         // Puissance de l'effet (Plus c'est bas, plus le contour est fin)
-        _RimThickness ("Rim Thickness", Range(0.05, 3.0)) = 0.5
+        _RimThickness ("Rim Thickness", Range(1, 2.0)) = 1
+        _FlashAmplitude ("Flash Amplitude", Range(0,1)) = 0.5
 
         // Paramètres des scanlines. La vitesse va du haut vers le bas, valeur négative pour l'inverse
         [Header(Scanlines)]
@@ -53,7 +54,7 @@ Shader "Custom/Hologram"
             float _CenterFalloff;
             float4 _RimColor;
             float _RimThickness;
-
+            float _FlashAmplitude;
             float _ScanSpeed;
             float _ScanDensity;
             float _ScanIntensity;
@@ -79,10 +80,12 @@ Shader "Custom/Hologram"
                 float centerMask = pow(NdotV, _CenterFalloff);
                 float3 centerBase = _MainColor.rgb * centerMask;
 
-                // Calcul du contour de l'objet
-                float invertedPower = 1.0 / max(_RimThickness, 0.001);
+                // Calcul du contour de l'objet avec un effet de clignotement
+                float flashing = _RimThickness + sin(_Time.y * 100) * _FlashAmplitude;
+                float invertedPower = 1.0 / max(0.001, flashing);
                 float rimMask = pow(1.0 - NdotV, invertedPower);
                 float3 rimEffect = _RimColor.rgb * rimMask;
+
 
                 // Addition des deux composantes précédentes
                 float3 finalRGB = centerBase + rimEffect;
