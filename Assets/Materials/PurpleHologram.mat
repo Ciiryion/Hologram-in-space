@@ -89,7 +89,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CenterFalloff: 8.6
+    - _CenterFalloff: 4.6
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -99,7 +99,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FlashAmplitude: 0.267
+    - _FlashAmplitude: 0.213
     - _GlitchFrequency: 10
     - _GlitchIntensity: 0.2
     - _GlitchThreshold: 0.1
@@ -117,7 +117,7 @@ Material:
     - _RimIntensity: 6.2
     - _RimPower: 1
     - _RimSharpness: 1.8
-    - _RimThickness: 1.259
+    - _RimThickness: 1.286
     - _Scale: 0.3
     - _ScanDensity: 370.03
     - _ScanIntensity: 0.333
