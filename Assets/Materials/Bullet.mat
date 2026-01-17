@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PurpleHologram
-  m_Shader: {fileID: 4800000, guid: 0343416e36844b74da4c99f2237defad, type: 3}
+  m_Name: Bullet
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -17,7 +17,8 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -85,11 +86,9 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Bias: 0.4
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CenterFalloff: 4.7
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -99,30 +98,15 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FlashAmplitude: 0.232
-    - _GlitchFrequency: 10
-    - _GlitchIntensity: 0.62
-    - _GlitchThreshold: 0.093
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlinesIntensity: 4.44
-    - _OutlinesSharpness: 1
     - _Parallax: 0.005
-    - _Power: -5.08
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RimIntensity: 6.2
-    - _RimPower: 1
-    - _RimSharpness: 1.8
-    - _RimThickness: 1.166
-    - _Scale: 0.3
-    - _ScanDensity: 370.03
-    - _ScanIntensity: 0.333
-    - _ScanSpeed: -40.8
-    - _Smoothness: 0.5
+    - _Smoothness: 0.119
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -132,15 +116,13 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.8113208, g: 0.20053399, b: 0.20053399, a: 1}
+    - _Color: {r: 0.8113207, g: 0.20053396, b: 0.20053396, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.5913954, g: 0.15327159, b: 0.78867924, a: 1}
-    - _RimColor: {r: 0.42757875, g: 0.06461367, b: 0.6226415, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8215887138851268465
+--- !u!114 &2083908193685956214
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
