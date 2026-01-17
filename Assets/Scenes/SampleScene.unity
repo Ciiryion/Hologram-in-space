@@ -441,11 +441,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735910180}
+  - component: {fileID: 735910181}
   - component: {fileID: 735910179}
   - component: {fileID: 735910178}
   - component: {fileID: 735910177}
   m_Layer: 0
-  m_Name: Petit hologramme
+  m_Name: Hologramme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,12 +541,25 @@ Transform:
   m_GameObject: {fileID: 735910176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: 1.78, z: -5.3}
-  m_LocalScale: {x: 0.46967, y: 0.46967, z: 0.46967}
+  m_LocalPosition: {x: -0.95, y: 2.71, z: -5.3}
+  m_LocalScale: {x: 2.3161776, y: 2.3161776, z: 2.3161776}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735910181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735910176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8daa17281f9a6479e81cbb666eeaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HologramHit
+  hitDuration: 0.35
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

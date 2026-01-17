@@ -24,6 +24,12 @@ Shader "Custom/Hologram"
         _GlitchFrequency ("Glitch Frequency", Range(0, 50)) = 10.0
         _GlitchThreshold ("Glitch Chance", Range(0, 1)) = 0.1
         _GlitchIntensity ("Glitch Intensity", Range(0, 2)) = 0.2
+
+        // Paramètres de l'impact avec une balle
+        [Header(Impact)]
+        _HitPosition ("Hit Position", Vector) = (0,0,0,0)
+        _HitStrength ("Hit Strength", Range(0,1)) = 0.0 // Animé par script
+        _HitRadius ("Hit Radius", Float) = 0.5
     }
     SubShader
     {
@@ -40,31 +46,19 @@ Shader "Custom/Hologram"
             #pragma fragment frag
             #include "UnityCG.cginc"
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
+            struct appdata { float4 vertex : POSITION; float3 normal : NORMAL; };
+
+            struct v2f {
+                float4 vertex : SV_POSITION; float3 worldNormal : TEXCOORD0; float3 viewDir : TEXCOORD1;
+                float3 worldPos : TEXCOORD3; float glitchState : TEXCOORD4;
             };
 
-            struct v2f
-            {
-                float4 vertex : SV_POSITION;
-                float3 worldNormal : TEXCOORD0;
-                float3 viewDir : TEXCOORD1;
-                float3 worldPos : TEXCOORD3;
-                float glitchState : TEXCOORD4;
-            };
-
-            float4 _MainColor, _RimColor;
-            float _CenterFalloff, _RimThickness, _FlashAmplitude;
-            float _ScanSpeed, _ScanDensity, _ScanIntensity;
-            float _GlitchFrequency, _GlitchThreshold, _GlitchIntensity;
+            float4 _MainColor, _RimColor, _HitPosition;
+            float _CenterFalloff, _RimThickness, _FlashAmplitude, _HitStrength, _HitRadius;
+            float _ScanSpeed, _ScanDensity, _ScanIntensity, _GlitchFrequency, _GlitchThreshold, _GlitchIntensity;
 
             // Rrenvoie un chiffre chaotique entre 0 et 1 pour simuler l'aléatoire'
-            float randomNoise(float2 seed)
-            {
-                return frac(sin(dot(seed, float2(12.9898, 78.233))) * 43758.5453);
-            }
+            float randomNoise(float2 seed) { return frac(sin(dot(seed, float2(12.9898, 78.233))) * 43758.5453); }
 
             v2f vert (appdata v)
             {
@@ -99,17 +93,26 @@ Shader "Custom/Hologram"
                 float flash = _RimThickness + sin(_Time.y * 100) * _FlashAmplitude;
                 float3 rimEffect = _RimColor.rgb * pow(1.0 - NdotV, 1.0 / max(0.001, flash));
 
-                // Calcul et ajout des scanlines
+                // Calcul des scanlines
                 float scanLinesPos = i.worldPos.y * _ScanDensity + _Time.y * _ScanSpeed;
                 float scanLinesPattern = (sin(scanLinesPos) + 1.0) * 0.5;
                 float scanLines = lerp(1.0, scanLinesPattern, _ScanIntensity);
                 
+                // Calcul de l'Impact
+                float d = distance(i.worldPos, _HitPosition.xyz);
+                float ripple = (sin(d * 50.0 - _Time.y * 50.0) + 1.0) * 0.5;
+                float3 impactEffect = _RimColor * smoothstep(_HitRadius, 0, d) * ripple * _HitStrength * 5.0;
+
                 // Assemblage
-                float3 finalRGB = (centerBase + rimEffect) * scanLines;
-                float finalAlpha = max(pow(NdotV, _CenterFalloff) * _MainColor.a, pow(1.0 - NdotV, 1.0 / max(0.001, flash)) * _RimColor.a);
+                float3 finalRGB = (centerBase + rimEffect) * scanLines + impactEffect;
+                float baseAlpha = max(pow(NdotV, _CenterFalloff) * _MainColor.a, pow(1.0 - NdotV, 1.0 / max(0.001, flash)) * _RimColor.a);
 
                 // Pendant un glitch, l'hologramme devient un peu plus opaque
-                finalAlpha = max(finalAlpha, i.glitchState * 0.8);
+                float glitchAlpha = max(baseAlpha, i.glitchState * 0.8);
+
+                // Rend opaque là où il y a un impact
+                float finalAlpha = max(glitchAlpha, _HitStrength * smoothstep(_HitRadius, 0, d));
+                
                 return fixed4(finalRGB, finalAlpha);
             }
             ENDCG
