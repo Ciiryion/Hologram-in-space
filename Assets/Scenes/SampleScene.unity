@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ee9f00840f98584b91e4ea65263ab2f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c047dc4311e7cac4e8854ecb51d70848, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,13 +224,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116862375}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 110.8, y: -74.9, z: -29.6}
-  m_LocalScale: {x: 159.68457, y: 159.68457, z: 159.68457}
+  m_LocalRotation: {x: -0, y: -0, z: -0.22313821, w: 0.9747869}
+  m_LocalPosition: {x: 128.5, y: -74.9, z: -29.6}
+  m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -25.787}
 --- !u!1 &276055569
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.06966882, g: 0.07045795, b: 0.07169801, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b92fdd5cc525546b357dab22c8d697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  fireRate: 0.15
+  fireRate: 1
   bullet: {fileID: 4696210294241212186, guid: 2baa02e300ddbb542b2eacc3f82cbc07, type: 3}
   bulletSpawnPoint: {fileID: 1376043953}
   recoilDistance: 0.1
